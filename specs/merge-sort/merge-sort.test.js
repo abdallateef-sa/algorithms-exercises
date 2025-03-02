@@ -7,8 +7,42 @@
 */
 
 const mergeSort = (nums) => {
-  // code goes here
+
+  //base case
+  if (nums.length < 2) return nums;
+
+  //break the array     
+  const length = nums.length ;
+  const middle = Math.floor(length / 2);
+  const left = nums.slice(0 ,middle);
+  const right = nums.slice(middle);
+
+  // recursion
+  const sortedLeft = mergeSort(left);
+  const sortedRight = mergeSort(right);
+
+  // to merge
+  return merge(sortedLeft,sortedRight);
+
 };
+
+const merge =(left , right)=>{
+  
+  result = [];
+
+  while(left.length && right.length){
+    if(left[0] <= right[0] ){
+      result.push(left.shift());
+    }else{
+      result.push(right.shift());
+    }
+
+  }
+  
+  return result.concat(left , right);
+
+}
+
 
 // unit tests
 // do not modify the below code

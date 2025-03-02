@@ -10,7 +10,18 @@
  */
 
 function nestedAdd(array) {
+
+  num = 0;
+
+  for(let i = 0 ; i <array.length ; i++){
+
+    let current = array[i];
+      
+    Array.isArray(current) ? num += nestedAdd(current) :  num += current; 
+
+  }
   
+  return num;
 }
 
 test.skip("nested arrays addition", () => {
